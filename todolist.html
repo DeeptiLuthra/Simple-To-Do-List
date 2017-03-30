@@ -1,0 +1,45 @@
+<html>
+<head>
+<title> To Do List </title>
+<script type="text/javascript" src="angular.min.js">
+</script>
+<script type="text/javascript" src="todoapp.js">
+</script>
+
+</head>
+
+<body data-ng-app="todoapp">
+<h2> My To Do List </h2>
+<div data-ng-controller="todocontroller">
+Enter task description:
+<input type="text" data-ng-model="description" prompt="Description"/>
+<button data-ng-click="tasks()">Add New Task</button>
+
+<h3 data-ng-show="pending.length>0"> Pending Tasks</h3>
+<table data-ng-repeat="task in pending">
+<tr>
+<td>
+<input type="checkbox" data-ng-model="task.checked" data-ng-change="taskCompleted($index)" />
+</td>
+<td>
+{{task.description}}
+</td>
+</tr>
+</table>
+
+<h3 data-ng-show="completed.length>0"> Completed Tasks</h3>
+<table data-ng-repeat="task in completed">
+<tr>
+<td>
+<input type="checkbox" data-ng-model="task.checked" data-ng-change="taskPending($index)" />
+</td>
+<td>
+{{task.description}}
+</td>
+</tr>
+</table>
+
+</div>
+</body>
+
+</html>
